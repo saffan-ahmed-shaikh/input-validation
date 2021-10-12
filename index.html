@@ -459,19 +459,19 @@
             clearTimeout(time);
             time = setTimeout(modal, 30000)
             // 1000 milliseconds = 1 second
+            showTimer = setTimeout(timerCount, 30000)
         }
 
         function modal() {
             //location.href = 'modal.html'
             myModal.show()
-            timerCount();
         }
 
-        function close() {
-            //location.href = 'modal.html'
-            myModal.hide()
-            document.getElementById('timer').innerHTML = 00 + ":" + 00;
-        }
+        // function close() {
+        //     //location.href = 'modal.html'
+        //     myModal.hide()
+        //     document.getElementById('timer').innerHTML = 00 + ":" + 00;
+        // }
         window.onload = function () {
             inactivityTime();
         }
