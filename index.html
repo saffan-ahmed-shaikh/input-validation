@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="fontawesome/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -14,16 +15,13 @@
         }
 
         body {
-            background-color: black;
+            background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
         }
 
-        .container {
-            background-color: black;
+        .container-fluid {
+            background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
             padding: 30px;
-        }
-
-        h1 {
-            text-align: center;
+            height: 100%;
         }
 
         main {
@@ -62,7 +60,7 @@
             font-size: 15px;
         }
 
-        button {
+        .tt {
             font-size: 20px;
             padding: 10px 70px;
             margin: 20px 0px;
@@ -117,12 +115,35 @@
             color: pink;
         }
 
+        .icons i {
+            font-size: 25px;
+            display: none;
+        }
+
+        .icons i:first-child {
+            color: blue;
+        }
+
+        .icons i:last-child {
+            color: pink;
+        }
+
+        .icons i:nth-child(2) {
+            color: yellow;
+        }
+
         ::-webkit-inner-spin-button {
             display: none;
         }
 
+        .star {
+            color: red;
+        }
+
         @media(max-width: 850px) {
-            main {
+
+            main,
+            .right {
                 width: 100%;
             }
         }
@@ -130,34 +151,33 @@
 </head>
 
 <body>
-    <div class="container">
-        <main>
-            <form onsubmit="return result(event)" id="none">
-                <h1>Validation Form</h1>
-                <div class="input"> <label for="fname">FirstName<span style="color: red;">*</span></label>
+    <div class="container-fluid">
+        <main id="none">
+            <form onsubmit="return result(event)">
+                <h1 class="text-center">Validation Form</h1>
+                <div class="input"> <label for="fname">First Name<span class="star">*</span></label>
                     <input type="text" placeholder="FirstName" id="fname">
                     <p id="errorforfname"></p>
                 </div>
-                <div class="input"> <label for="mname">MiddleName<span style="color: red;">*</span></label>
+                <div class="input"> <label for="mname">Middle Name<span class="star">*</span></label>
                     <input type="text" placeholder="MiddleName" id="mname">
                     <p id="errorformname"></p>
                 </div>
-                <div class="input"> <label for="lname" class="forlname">LastName<span
-                            style="color: red;">*</span></label>
+                <div class="input"> <label for="lname" class="forlname">Last Name<span class="star">*</span></label>
                     <input type="text" placeholder="LastName" id="lname">
                     <p id="errorforlname"></p>
                 </div>
-                <div class="input"> <label for="number">Number:<span style="color: red;">*</span></label>
+                <div class="input"> <label for="number">Number<span class="star">*</span></label>
                     <input type="text" placeholder="Number" id="num" maxlength="10"
                         oninput="this.value = this.value.replace(/[^0-9,e]/g, '').replace(/(\..*)\./g, '$1');">
                     <p id="errorfornumber"></p>
                 </div>
-                <div class="input"> <label for="email">Email:<span style="color: red;">*</span></label>
+                <div class="input"> <label for="email">Email<span class="star">*</span></label>
                     <input type="text" placeholder="Email" id="email">
                     <p id="errorforemail"></p>
                 </div>
                 <div class="gender">
-                    <h2>Gender:-<span style="color: red;">*</span></h2>
+                    <h2>Gender:-<span class="star">*</span></h2>
                     <input type="radio" value="male" id="male" name="gender" checked>
                     <label for="male">Male</label>
                     <input type="radio" value="female" id="female" name="gender">
@@ -166,43 +186,45 @@
                     <label for="other">Others</label>
                 </div>
 
-                <div class="input"> <label for="dob" class="forblock">Date of Birth:<span
-                            style="color: red;">*</span></label>
+                <div class="input"> <label for="dob" class="forblock">Date of Birth<span class="star">*</span></label>
                     <input type="date" placeholder="Date Of Birth" id="dob">
                     <p id="errorfordob"></p>
                 </div>
-                <div class="input"> <label for="lname">Website:<span style="color: red;">*</span></label>
-                    <input type="text" placeholder="LastName" id="website">
+                <div class="input"> <label for="website">Website<span class="star">*</span></label>
+                    <input type="text" placeholder="www.example.com" id="website">
                     <p id="errorforwebsite"></p>
                 </div>
-                <div class="input"><label for="lname">Password:<span style="color: red;">*</span></label>
-                    <input type="text" placeholder="LastName" id="password">
+                <div class="input"><label for="password">Password<span class="star">*</span></label>
+                    <input type="text" placeholder="Minimum 8 Characters" id="password">
                     <p id="errorforpassword"></p>
                 </div>
-                <div class="input"> <label for="lname">Confirm Password:<span style="color: red;">*</span></label>
-                    <input type="text" placeholder="LastName" id="confirmpassword">
+                <div class="input"> <label for="confirmpassword">Confirm Password<span class="star">*</span></label>
+                    <input type="text" placeholder="Same As Above" id="confirmpassword">
                     <p id="errorforconfirmpassword"></p>
                 </div>
-                <div class="terms"> <label for="termsandcondition"> Terms & Condition<span
-                            style="color: red;">*</span></label>
-                    <input type="checkbox" id="termsandcondition">
-                    <p id="errorfortermsandcindition"></p>
+                <div class="terms">
+                    <input type="checkbox" id="termsandcondition" name="tac" value="tac">
+                    <label for="termsandcondition"> Terms & Condition </label>
+                    <p id="errorfortac"></p>
                 </div>
-                <div class="btn">
-                    <button type="submit"> SUBMIT</button>
+                <div class="button">
+                    <button type="submit" class="btn-lg tt"> SUBMIT</button>
                 </div>
             </form>
         </main>
         <div class="right" id="block">
-            <h1>Result</h1>
-            <p>Name: <span id="fullnameresult"></span> </p>
+            <h1 class="text-center">Result</h1>
+            <p>Name: <span id="fullnameresult" class="text-capitalize"></span> </p>
             <p>Number: <span id="numberresult"></span></p>
             <p>Email: <span id="emailresult"></span></p>
-            <p>Gender: <span class="genderView" id="genderresult"></span></p>
+            <p>Gender: <span class="icons"><i class="fas fa-mars" id="maleicon"></i><i class="fas fa-transgender"
+                        id="othericon"></i>
+                    <i class="fas fa-venus" id="femaleicon"></i></span> <span class="genderView text-capitalize"
+                    id="genderresult">
+                </span></p>
             <p>Date of Birth: <span id="dobresult"></span></p>
             <p>Website: <span id="websiteresult"></span></p>
             <p>Password: <span id="passwordresult"></span></p>
-            <p>Confirm Password: <span id="confirmpasswordresult"></span></p>
         </div>
     </div>
     <script>
@@ -221,6 +243,7 @@
             var valuefromwebsite = document.getElementById("website").value;
             var valuefrompassword = document.getElementById("password").value;
             var valuefromconfirmpassword = document.getElementById("confirmpassword").value;
+            var tac = document.querySelector('input[name="tac"]:checked')
             var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
             var name_regex = /^[a-zA-Z ]{2,30}$/;
             var urlpattern =
@@ -247,8 +270,9 @@
                     }
                 }
             }
-
-            if (valuefromfname && valuefrommname && valuefromlastname) {
+            if (valuefromfname && valuefrommname && valuefromlastname && valuefromwebsite && valuefromdob &&
+                valuefromemail && valuefromnumber &&
+                valuefrompassword && valuefromconfirmpassword && tac) {
                 let ifAllInputsHaveValidated = true;
                 if (name_regex.test(valuefromfname)) {
                     document.getElementById("errorforfname").innerHTML = "";
@@ -305,6 +329,11 @@
                     document.getElementById("errorforconfirmpassword").innerHTML = "Password do not Match";
                     ifAllInputsHaveValidated = false;
                 }
+                if (tac) {
+                    document.getElementById("errorfortac").innerHTML = "";
+                } else {
+                    ifAllInputsHaveValidated = false;
+                }
                 if (ifAllInputsHaveValidated) {
                     let send_data = {
                         "firstName": valuefromfname,
@@ -348,11 +377,28 @@
                 if (!valuefromconfirmpassword) {
                     document.getElementById("errorforconfirmpassword").innerHTML = "Confirm Password is Required!";
                 }
+                if (!tac) {
+                    document.getElementById("errorfortac").innerHTML = "Please select the above checkbox";
+                }
             }
         }
 
         function showMyViewContainer(get_data) {
-            console.log("get_data", get_data);
+            var pass = "";
+            var passlength = get_data.password;
+            for (let i = 0; i < passlength.length; i++) {
+                pass += "*";
+
+            }
+            if (get_data.gender == "male") {
+                document.getElementById("maleicon").style.display = "block";
+            }
+            if (get_data.gender == "female") {
+                document.getElementById("femaleicon").style.display = "block";
+            }
+            if (get_data.gender == "others") {
+                document.getElementById("othericon").style.display = "block";
+            }
             document.getElementById("none").style.display = "none";
             document.getElementById("block").style.display = "block";
             document.getElementById("fullnameresult").innerHTML = get_data.firstName + " " + get_data.middleName + " " +
@@ -362,8 +408,7 @@
             document.getElementById("emailresult").innerHTML = get_data.email;
             document.getElementById("numberresult").innerHTML = get_data.number;
             document.getElementById("websiteresult").innerHTML = get_data.website;
-            document.getElementById("passwordresult").innerHTML = get_data.password;
-            document.getElementById("confirmpasswordresult").innerHTML = get_data.confirmpassword;
+            document.getElementById("passwordresult").innerHTML = pass;
             document.getElementById("dobresult").innerHTML = get_data.dob;
         }
     </script>
