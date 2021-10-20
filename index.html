@@ -151,26 +151,6 @@
 </head>
 
 <body>
-    <div class="container" id="cont">
-        <div class="modal fade" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Time Out Modal Box</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="fs-3 fw-bold text-center">Time left = <span id="timer"></span></div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Continue</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="container-fluid">
         <main id="none">
             <form onsubmit="return result(event)">
@@ -436,84 +416,6 @@
             document.getElementById("websiteresult").innerHTML = get_data.website;
             document.getElementById("passwordresult").innerHTML = pass;
             document.getElementById("dobresult").innerHTML = get_data.dob;
-        }
-
-        //Modal Box Code Start From Here
-        var myModal = new bootstrap.Modal(document.getElementById('myModal'), {
-            keyboard: false
-        });
-        var time;
-        var inactivityTime = function () {
-            // document.onload = resetTimer;
-            document.onmousemove = resetTimer;
-            document.onmousedown = resetTimer; // touchscreen presses
-            document.ontouchstart = resetTimer;
-            document.onclick = resetTimer; // touchpad clicks
-            document.onkeydown = resetTimer; // onkeypress is deprectaed
-            document.addEventListener('scroll', resetTimer, true); // improved; see comments
-
-
-        };
-
-        function resetTimer() {
-            clearTimeout(time);
-            time = setTimeout(modal, 30000)
-            // 1000 milliseconds = 1 second
-            showTimer = setTimeout(timerCount, 30000)
-        }
-
-        function modal() {
-            //location.href = 'modal.html'
-            myModal.show()
-        }
-
-        // function close() {
-        //     //location.href = 'modal.html'
-        //     myModal.hide()
-        //     document.getElementById('timer').innerHTML = 00 + ":" + 00;
-        // }
-        window.onload = function () {
-            inactivityTime();
-        }
-
-        function timerCount() {
-            document.getElementById('timer').innerHTML = 00 + ":" + 30;
-            startTimer();
-        }
-
-
-
-        function startTimer() {
-            var presentTime = document.getElementById('timer').innerHTML;
-            var timeArray = presentTime.split(/[:]+/);
-
-            var m = timeArray[0];
-
-            var s = checkSecond((timeArray[1] - 1));
-
-            if (s == 59) {
-                m = m - 1
-            }
-            if (m < 0) {
-                return
-            }
-            if (s == 0 && m == 0) {
-                location.reload();
-            }
-            document.getElementById('timer').innerHTML = m + ":" + s;
-            setTimeout(startTimer, 1000);
-
-        }
-
-        function checkSecond(sec) {
-            if (sec < 10 && sec >= 0) {
-                sec = "0" + sec
-            }; // add zero in front of numbers < 10
-            if (sec < 0) {
-                sec = "59"
-            };
-            return sec;
-
         }
     </script>
 </body>
