@@ -156,24 +156,24 @@
             <form onsubmit="return result(event)">
                 <h1 class="text-center">Validation Form</h1>
                 <div class="input"> <label for="fname">First Name<span class="star">*</span></label>
-                    <input type="text" placeholder="FirstName" id="fname">
+                    <input type="text" placeholder="First Name" id="fname">
                     <p id="errorforfname"></p>
                 </div>
                 <div class="input"> <label for="mname">Middle Name<span class="star">*</span></label>
-                    <input type="text" placeholder="MiddleName" id="mname">
+                    <input type="text" placeholder="Middle Name" id="mname">
                     <p id="errorformname"></p>
                 </div>
                 <div class="input"> <label for="lname" class="forlname">Last Name<span class="star">*</span></label>
-                    <input type="text" placeholder="LastName" id="lname">
+                    <input type="text" placeholder="Last Name" id="lname">
                     <p id="errorforlname"></p>
                 </div>
                 <div class="input"> <label for="number">Number<span class="star">*</span></label>
                     <input type="text" placeholder="Number" id="num" maxlength="10"
-                        oninput="this.value = this.value.replace(/[^0-9,e]/g, '').replace(/(\..*)\./g, '$1');">
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
                     <p id="errorfornumber"></p>
                 </div>
                 <div class="input"> <label for="email">Email<span class="star">*</span></label>
-                    <input type="text" placeholder="Email" id="email">
+                    <input type="email" placeholder="Email" id="email">
                     <p id="errorforemail"></p>
                 </div>
                 <div class="gender">
@@ -191,15 +191,15 @@
                     <p id="errorfordob"></p>
                 </div>
                 <div class="input"> <label for="website">Website<span class="star">*</span></label>
-                    <input type="text" placeholder="www.example.com" id="website">
+                    <input type="url" placeholder="www.example.com" id="website">
                     <p id="errorforwebsite"></p>
                 </div>
                 <div class="input"><label for="password">Password<span class="star">*</span></label>
-                    <input type="text" placeholder="Minimum 8 Characters" id="password">
+                    <input type="password" placeholder="Minimum 8 Characters" id="password">
                     <p id="errorforpassword"></p>
                 </div>
                 <div class="input"> <label for="confirmpassword">Confirm Password<span class="star">*</span></label>
-                    <input type="text" placeholder="Same As Above" id="confirmpassword">
+                    <input type="password" placeholder="Same As Above" id="confirmpassword">
                     <p id="errorforconfirmpassword"></p>
                 </div>
                 <div class="terms">
