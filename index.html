@@ -225,7 +225,7 @@
             <p>Date of Birth: <span id="dobresult"></span></p>
             <p>Website: <span id="websiteresult"></span></p>
             <p>Password: <span id="passwordresult"></span></p>
-            <p><span id="resultfortac"></span></p>
+            <p>Terms & Conditions:<span id="resultfortac"></span></p>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
@@ -352,7 +352,8 @@
                         "website": valuefromwebsite,
                         "dob": valuefromdob,
                         "password": valuefrompassword,
-                        "confirmpassword": valuefromconfirmpassword
+                        "confirmpassword": valuefromconfirmpassword,
+                        "tac":tac
                     };
                     showMyViewContainer(send_data);
                 }
@@ -417,8 +418,8 @@
             document.getElementById("websiteresult").innerHTML = get_data.website;
             document.getElementById("passwordresult").innerHTML = pass;
             document.getElementById("dobresult").innerHTML = get_data.dob;
-            if (tac) {
-                document.getElementById("resultfortac").innerHTML = "Agreed to the Terms & Conditions";
+            if (get_data.tac) {
+                document.getElementById("resultfortac").innerHTML = "Agreed";
             }
         }
     </script>
