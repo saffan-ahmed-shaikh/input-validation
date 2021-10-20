@@ -337,7 +337,7 @@
                     ifAllInputsHaveValidated = false;
                 }
                 if (tac) {
-                    document.getElementById("resultfortac").innerHTML = "Agreed to the Terms & Conditions";
+                    document.getElementById("errorfortac").innerHTML = "";
                 } else {
                     ifAllInputsHaveValidated = false;
                 }
@@ -417,6 +417,9 @@
             document.getElementById("websiteresult").innerHTML = get_data.website;
             document.getElementById("passwordresult").innerHTML = pass;
             document.getElementById("dobresult").innerHTML = get_data.dob;
+            if (tac) {
+                document.getElementById("resultfortac").innerHTML = "Agreed to the Terms & Conditions";
+            }
         }
     </script>
 </body>
