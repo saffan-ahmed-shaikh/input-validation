@@ -206,7 +206,7 @@
                     <p id="errorforwebsite"></p>
                 </div>
                 <div class="input"><label for="password">Password<span class="star">*</span></label>
-                    <input type="password" placeholder="Minimum 8 Characters" id="password">
+                    <input type="password" placeholder="Min 8 Characters Max 15 Characters" id="password">
                     <input type="checkbox" onclick="myFunction()" id="visible"> <label for="visible"> Show
                         Password</label>
                     <p id="errorforpassword"></p>
@@ -332,11 +332,11 @@
                     document.getElementById("errorforwebsite").innerHTML = "Enter Valid Website Url";
                     ifAllInputsHaveValidated = false;
                 }
-                if (valuefrompassword.length >= 8) {
+                if (valuefrompassword.length >= 8 && valuefrompassword.length <= 15) {
                     document.getElementById("errorforpassword").innerHTML = "";
                 } else {
                     document.getElementById("errorforpassword").innerHTML =
-                        "Password length must be equal or greater than 8 digits";
+                        "Password length must greater than 8 digits and smaller than 15 digits";
                     ifAllInputsHaveValidated = false;
                 }
                 if (valuefromconfirmpassword == valuefrompassword) {
