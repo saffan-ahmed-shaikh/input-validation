@@ -152,12 +152,25 @@
                 width: 100%;
             }
         }
+
+        .right div .btn {
+            float: right;
+            padding: 0px 6px;
+            margin: 7px 7px;
+            height: 30px;
+            width: 30px;
+            vertical-align: middle;
+            background-color: lightsteelblue;
+            border-radius: 50%;
+            font-weight: 700;
+            color: white;
+        }
     </style>
 </head>
 
 <body>
     <div class="container-fluid">
-        <main id="none">
+        <main id="main">
             <form onsubmit="return result(event)">
                 <h1 class="text-center">Validation Form</h1>
                 <div class="input"> <label for="fname">First Name<span class="star">*</span></label>
@@ -178,7 +191,7 @@
                     <p id="errorfornumber"></p>
                 </div>
                 <div class="input"> <label for="email">Email<span class="star">*</span></label>
-                    <input type="email" placeholder="example@gmail.com" id="email">
+                    <input type="email" placeholder="example@gmail.com" id="email" maxlength="25">
                     <p id="errorforemail"></p>
                 </div>
                 <div class="gender">
@@ -200,13 +213,14 @@
                     <p id="errorforwebsite"></p>
                 </div>
                 <div class="input"><label for="password">Password<span class="star">*</span></label>
-                    <input type="password" placeholder="Min 8 Characters Max 15 Characters" id="password">
+                    <input type="password" placeholder="Min 8 Characters Max 15 Characters" id="password"
+                        maxlength="15">
                     <input type="checkbox" onclick="myFunction()" id="visible"> <label for="visible"> Show
                         Password</label>
                     <p id="errorforpassword"></p>
                 </div>
                 <div class="input"> <label for="confirmpassword">Confirm Password<span class="star">*</span></label>
-                    <input type="password" placeholder="Same As Above" id="confirmpassword">
+                    <input type="password" placeholder="Same As Above" id="confirmpassword" maxlength="15">
                     <input type="checkbox" onclick="myFunction2()" id="visible1"> <label for="visible1"> Show
                         Password</label>
                     <p id="errorforconfirmpassword"></p>
@@ -221,7 +235,10 @@
                 </div>
             </form>
         </main>
-        <div class="right" id="block">
+        <div class="right" id="result">
+            <div>
+                <button type="button" onclick="closebtn()" class="btn">X</button>
+            </div>
             <h1 class="text-center">Result</h1>
             <p>Name: <span id="fullnameresult" class="text-capitalize"></span> </p>
             <p>Number: <span id="numberresult"></span></p>
@@ -238,6 +255,11 @@
         </div>
     </div>
     <script>
+        function closebtn() {
+            document.getElementById("main").style.display = "block";
+            document.getElementById("result").style.display = "none";
+        }
+
         function result(event) {
             event.preventDefault();
             var valuefromfname = document.getElementById("fname").value;
@@ -255,7 +277,7 @@
             var valuefromconfirmpassword = document.getElementById("confirmpassword").value;
             var tac = document.querySelector('input[name="tac"]:checked')
             var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-            var name_regex = /^[a-zA-Z ]{2,30}$/;
+            var name_regex = /^[a-zA-Z^S]{2,30}$/;
             var urlpattern =
                 /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g;
             var today = new Date();
@@ -428,8 +450,8 @@
             if (get_data.gender == "others") {
                 document.getElementById("othericon").style.display = "block";
             }
-            document.getElementById("none").style.display = "none";
-            document.getElementById("block").style.display = "block";
+            document.getElementById("main").style.display = "none";
+            document.getElementById("result").style.display = "block";
             document.getElementById("fullnameresult").innerHTML = get_data.firstName + " " + get_data.middleName + " " +
                 get_data.lastName;
             document.getElementById("genderresult").innerHTML = get_data.gender;
