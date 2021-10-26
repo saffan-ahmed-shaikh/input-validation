@@ -32,11 +32,13 @@
             border-radius: 15px;
             border: none;
             box-shadow: 0 0 8px rgb(0 0 0 / 30%);
+            overflow: hidden;
         }
 
         form {
             padding: 25px;
             position: relative;
+            /* box-shadow: inset 0 0 33px #0067ff; */
         }
 
         .input input {
@@ -91,12 +93,16 @@
             background-color: #fff;
             margin: 0 auto;
             display: none;
+            padding: 15px;
+            box-shadow: 0 0 8px rgb(0 0 0 / 30%);
+            border-radius: 10px;
+            position: relative;
         }
 
-        .right p {
-            padding: 10px 20px;
-            display: flex;
-            align-items: center;
+        .box p {
+            background-color: #607d8b;
+            padding: 10px;
+            color: white;
             font-size: 20px;
             word-wrap: break-word;
         }
@@ -105,9 +111,16 @@
             margin-left: 5px;
         }
 
-        .right span {
-            display: inline-block;
-            padding-left: 10px;
+        .box {
+            text-align: center;
+            box-shadow: 0 0 8px rgb(0 0 0 / 30%);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .box span {
+            display: block;
+            padding: 10px;
             font-size: 20px;
             font-weight: 600;
             white-space: nowrap;
@@ -173,10 +186,12 @@
             }
         }
 
-        .right div .btn {
-            float: right;
-            padding: 0px 6px;
-            margin: 7px 7px;
+        .closebtn {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            padding: 0;
+            margin: 0;
             height: 30px;
             width: 30px;
             vertical-align: middle;
@@ -257,21 +272,44 @@
         </main>
         <div class="right" id="result">
             <div>
-                <button type="button" onclick="closebtn()" class="btn">X</button>
+                <button type="button" onclick="closebtn()" class="btn closebtn">X</button>
             </div>
-            <h1 class="text-center">Result</h1>
-            <p>Name: <span id="fullnameresult" class="text-capitalize"></span> </p>
-            <p>Number: <span id="numberresult"></span></p>
-            <p>Email: <span id="emailresult"></span></p>
-            <p>Gender: <span class="icons"><i class="fas fa-mars" id="maleicon"></i><i class="fas fa-transgender"
-                        id="othericon"></i>
-                    <i class="fas fa-venus" id="femaleicon"></i></span> <span class="genderView text-capitalize"
-                    id="genderresult">
-                </span></p>
-            <p>Date of Birth: <span id="dobresult"></span></p>
-            <p>Website: <span id="websiteresult"></span></p>
-            <p>Password: <span id="passwordresult"></span></p>
-            <p>Terms & Conditions:<span id="resultfortac"></span></p>
+            <h1 class=" text-center">Result</h1>
+            <div class="box">
+                <p>Name </p><span id="fullnameresult" class="text-capitalize"></span>
+            </div>
+            <div class="row g-4">
+                <div class="box col-6">
+                    <p>Number </p><span id="numberresult"></span>
+                </div>
+                <div class="box col-6">
+                    <p>Email</p> <span id="emailresult"></span>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="box col-6">
+                    <p>Gender </p>
+                    <span class="icons"><i class="fas fa-mars" id="maleicon"></i><i class="fas fa-transgender"
+                            id="othericon"></i>
+                        <i class="fas fa-venus" id="femaleicon"></i></span> <span class="genderView text-capitalize"
+                        id="genderresult">
+                    </span>
+                </div>
+                <div class="box col-6">
+                    <p>Date of Birth <span id="dobresult"></span></p>
+                </div>
+            </div>
+            <div class="box">
+                <p>Website</p> <span id="websiteresult"></span>
+            </div>
+            <div class="row g-4">
+                <div class="box col-6">
+                    <p>Password </p><span id="passwordresult"></span>
+                </div>
+                <div class="box col-6">
+                    <p>Terms & Conditions</p><span id="resultfortac"></span>
+                </div>
+            </div>
         </div>
     </div>
     <script>
@@ -311,14 +349,23 @@
                 if (element.id == "male") {
                     if (element.checked) {
                         gender = "male";
+                        document.getElementById("maleicon").style.display = "block";
+                        document.getElementById("femaleicon").style.display = "none";
+                        document.getElementById("othericon").style.display = "none";
                     }
                 } else if (element.id == "female") {
                     if (element.checked) {
                         gender = "female";
+                        document.getElementById("maleicon").style.display = "none";
+                        document.getElementById("femaleicon").style.display = "block";
+                        document.getElementById("othericon").style.display = "none";
                     }
                 } else {
                     if (element.checked) {
                         gender = "others";
+                        document.getElementById("maleicon").style.display = "none";
+                        document.getElementById("femaleicon").style.display = "none";
+                        document.getElementById("othericon").style.display = "block";
                     }
                 }
             }
@@ -461,18 +508,10 @@
                 pass += "*";
 
             }
-            if (get_data.gender == "male") {
-                document.getElementById("maleicon").style.display = "block";
-            }
-            if (get_data.gender == "female") {
-                document.getElementById("femaleicon").style.display = "block";
-            }
-            if (get_data.gender == "others") {
-                document.getElementById("othericon").style.display = "block";
-            }
             document.getElementById("main").style.display = "none";
             document.getElementById("result").style.display = "block";
-            document.getElementById("fullnameresult").innerHTML = get_data.firstName + " " + get_data.middleName + " " +
+            document.getElementById("fullnameresult").innerHTML = get_data.firstName + " " + get_data.middleName +
+                " " +
                 get_data.lastName;
             document.getElementById("genderresult").innerHTML = get_data.gender;
             document.getElementById("genderresult").classList.add(get_data.gender);
