@@ -178,14 +178,6 @@
             padding-left: 5px;
         }
 
-        @media(max-width: 850px) {
-
-            main,
-            .right {
-                width: 100%;
-            }
-        }
-
         .closebtn {
             position: absolute;
             right: 15px;
@@ -199,6 +191,14 @@
             border-radius: 50%;
             font-weight: 700;
             color: white;
+        }
+
+        @media(max-width: 750px) {
+
+            main,
+            .right {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -274,40 +274,63 @@
             <div>
                 <button type="button" onclick="closebtn()" class="btn closebtn">X</button>
             </div>
-            <h1 class=" text-center">Result</h1>
-            <div class="box">
-                <p>Name </p><span id="fullnameresult" class="text-capitalize"></span>
-            </div>
-            <div class="row g-4">
-                <div class="box col-6">
-                    <p>Number </p><span id="numberresult"></span>
-                </div>
-                <div class="box col-6">
-                    <p>Email</p> <span id="emailresult"></span>
+            <h1 class="text-center">Result</h1>
+            <div class="row">
+                <div class="col-12">
+                    <div class="box">
+                        <p>Name</p>
+                        <span id="fullnameresult" class="text-capitalize"></span>
+                    </div>
                 </div>
             </div>
-            <div class="row g-4">
-                <div class="box col-6">
-                    <p>Gender </p>
-                    <span class="icons"><i class="fas fa-mars" id="maleicon"></i><i class="fas fa-transgender"
-                            id="othericon"></i>
-                        <i class="fas fa-venus" id="femaleicon"></i></span> <span class="genderView text-capitalize"
-                        id="genderresult">
-                    </span>
+            <div class="row">
+                <div class="col-6">
+                    <div class="box">
+                        <p>Number </p><span id="numberresult"></span>
+                    </div>
                 </div>
-                <div class="box col-6">
-                    <p>Date of Birth <span id="dobresult"></span></p>
+                <div class="col-6">
+                    <div class="box">
+                        <p>Email</p> <span id="emailresult"></span>
+                    </div>
                 </div>
             </div>
-            <div class="box">
-                <p>Website</p> <span id="websiteresult"></span>
-            </div>
-            <div class="row g-4">
-                <div class="box col-6">
-                    <p>Password </p><span id="passwordresult"></span>
+            <div class="row">
+                <div class="col-6">
+                    <div class="box">
+                        <p>Gender </p>
+                        <span class="icons"><i class="fas fa-mars" id="maleicon"></i><i class="fas fa-transgender"
+                                id="othericon"></i>
+                            <i class="fas fa-venus" id="femaleicon"></i></span> <span class="genderView text-capitalize"
+                            id="genderresult">
+                        </span>
+                    </div>
                 </div>
-                <div class="box col-6">
-                    <p>Terms & Conditions</p><span id="resultfortac"></span>
+                <div class="col-6">
+                    <div class="box">
+                        <p>Date of Birth</p>
+                        <span id="dobresult"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="box">
+                        <p>Website</p>
+                        <span id="websiteresult"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="box">
+                        <p>Password </p><span id="passwordresult"></span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="box">
+                        <p>Terms & Conditions</p><span id="resultfortac"></span>
+                    </div>
                 </div>
             </div>
         </div>
