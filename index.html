@@ -26,7 +26,7 @@
         }
 
         main {
-            width: 50%;
+            width: 600px;
             background-color: #fff;
             margin: 0 auto;
             border-radius: 15px;
@@ -50,11 +50,7 @@
             outline: none;
         }
 
-        input {
-            margin-bottom: 5px;
-        }
-
-        label {
+        .head-view {
             margin-right: 5px;
             margin: 15px 0 5px 5px;
             display: inline-block;
@@ -88,8 +84,8 @@
         }
 
         .right {
-            border: 1px solid #000;
-            width: 50%;
+            border: none;
+            width: 600px;
             background-color: #fff;
             margin: 0 auto;
             display: none;
@@ -105,6 +101,7 @@
             color: white;
             font-size: 20px;
             word-wrap: break-word;
+            margin-bottom: 0;
         }
 
         .terms input {
@@ -118,7 +115,7 @@
             overflow: hidden;
         }
 
-        .box span {
+        .result-view-box {
             display: block;
             padding: 10px;
             font-size: 20px;
@@ -129,7 +126,7 @@
         }
 
         .genderView {
-            color: yellow;
+            color: #ffc107;
         }
 
         .genderView.male {
@@ -137,7 +134,11 @@
         }
 
         .genderView.female {
-            color: pink;
+            color: #e15764;
+        }
+
+        .icons {
+            display: inline-block;
         }
 
         .icons i {
@@ -146,15 +147,15 @@
         }
 
         .icons i:first-child {
-            color: blue;
+            color: #09b8ff;
         }
 
         .icons i:last-child {
-            color: pink;
+            color: #e15764;
         }
 
         .icons i:nth-child(2) {
-            color: yellow;
+            color: #ffc107;
         }
 
         ::-webkit-inner-spin-button {
@@ -193,6 +194,116 @@
             color: white;
         }
 
+        .block-label {
+            display: block;
+            text-align: center;
+        }
+
+        .content {
+            display: flex;
+            align-items: center;
+        }
+
+        .flex-box {
+            font-size: 25px;
+            border: 2px solid;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .flex-box input {
+            display: inline-block;
+            height: 20px;
+            width: 20px;
+        }
+
+        .gender-container {
+            margin-right: 10px;
+            position: relative;
+        }
+
+        .gender-container input {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 15px;
+            height: 15px;
+        }
+
+        .gender-container label {
+            display: inline-block;
+            border: 2px dashed;
+            padding: 15px;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        .gender-container input:not(:checked)+label {
+            cursor: pointer;
+        }
+
+        .gender-container label.female {
+            border-color: #e15764;
+            color: #e15764;
+        }
+
+        .gender-container label.male {
+            border-color: #09b8ff;
+            color: #09b8ff;
+        }
+
+        .gender-container label.other {
+            border-color: #ffc107;
+            color: #ffc107;
+        }
+
+        #female::after,
+        #male::after,
+        #other::after {
+            width: 15px;
+            height: 15px;
+            border-radius: 15px;
+            top: 0;
+            left: 0;
+            position: absolute;
+            background-color: white;
+            content: '';
+            display: inline-block;
+            visibility: visible;
+        }
+
+        #other:checked:after {
+            background-color: #ffc107 !important;
+        }
+
+        #female:checked:after {
+            background-color: #e15764 !important;
+        }
+
+        #male:checked:after {
+            background-color: #09b8ff !important;
+        }
+
+        .gender-container input:checked+label {
+            border-style: solid;
+        }
+
+        .gender-container input:checked+label.female {
+            background-color: rgb(225 87 100 / 30%);
+        }
+
+        .gender-container input:checked+label.male {
+            background-color: rgb(9 184 255 / 30%);
+        }
+
+        .gender-container input:checked+label.other {
+            background-color: rgb(255 193 7 / 30%);
+        }
+
+        .box p i {
+            margin-left: 5px;
+        }
+
         @media(max-width: 750px) {
 
             main,
@@ -208,53 +319,81 @@
         <main id="main">
             <form onsubmit="return result(event)">
                 <h1 class="text-center">Validation Form</h1>
-                <div class="input"> <label for="fname">First Name<span class="star">*</span></label>
+                <div class="input"> <label for="fname" class="head-view">First Name<span class="star">*</span></label>
                     <input type="text" placeholder="John" id="fname" maxlength="15">
                     <p id="errorforfname"></p>
                 </div>
-                <div class="input"> <label for="mname">Middle Name<span class="star">*</span></label>
+                <div class="input"> <label for="mname" class="head-view">Middle Name<span class="star">*</span></label>
                     <input type="text" placeholder="Doe" id="mname" maxlength="15">
                     <p id="errorformname"></p>
                 </div>
-                <div class="input"> <label for="lname" class="forlname">Last Name<span class="star">*</span></label>
+                <div class="input"> <label for="lname" class="head-view">Last Name<span class="star">*</span></label>
                     <input type="text" placeholder="Roy" id="lname" maxlength="15">
                     <p id="errorforlname"></p>
                 </div>
-                <div class="input"> <label for="number">Mobile Number<span class="star">*</span></label>
+                <div class="input"> <label for="number" class="head-view">Mobile Number<span
+                            class="star">*</span></label>
                     <input type="text" placeholder="Enter your Mobile Number" id="num" maxlength="10"
                         oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
                     <p id="errorfornumber"></p>
                 </div>
-                <div class="input"> <label for="email">Email<span class="star">*</span></label>
+                <div class="input"> <label for="email" class="head-view">Email<span class="star">*</span></label>
                     <input type="email" placeholder="example@gmail.com" id="email" maxlength="25">
                     <p id="errorforemail"></p>
                 </div>
                 <div class="gender">
-                    <h2>Gender<span class="star">*</span>:-</h2>
-                    <input type="radio" value="male" id="male" name="gender" checked>
-                    <label for="male">Male</label>
-                    <input type="radio" value="female" id="female" name="gender">
-                    <label for="female">Female</label>
-                    <input type="radio" id="other" value="other" name="gender">
-                    <label for="other">Others</label>
+                    <h2 class="mb-3">Gender<span class="star">*</span>:-</h2>
+                    <div class="content">
+                        <div class="gender-container">
+                            <input type="radio" value="male" id="male" name="gender" checked>
+                            <label for="male" class="male">
+                                <span for="male">Male</span>
+                                <span for="male" class="block-label">
+                                    <span> <i class="fas fa-mars"></i></span>
+                                </span>
+                            </label>
+                        </div>
+
+                        <div class="gender-container">
+                            <input type="radio" value="female" id="female" name="gender">
+                            <label for="female" class="female">
+                                <span for="female">Female</span>
+                                <span for="female" class="block-label">
+                                    <span> <i class="fas fa-venus"></i> </span>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="gender-container">
+                            <input type="radio" id="other" value="other" name="gender">
+                            <label for="other" class="other">
+                                <span for="other">Others</span>
+                                <span for="other" class="block-label">
+                                    <span> <i class="fas fa-transgender"></i></span>
+                                </span>
+                            </label>
+                        </div>
+
+                    </div>
                 </div>
 
-                <div class="input"> <label for="dob" class="forblock">Date of Birth<span class="star">*</span></label>
+                <div class="input"> <label for="dob" class="forblock head-view">Date of Birth<span
+                            class="star">*</span></label>
                     <input type="date" placeholder="Date Of Birth" id="dob">
                     <p id="errorfordob"></p>
                 </div>
-                <div class="input"> <label for="website">Website<span class="star">*</span></label>
+                <div class="input"> <label for="website" class="head-view">Website<span class="star">*</span></label>
                     <input type="url" placeholder="www.example.com" id="website">
                     <p id="errorforwebsite"></p>
                 </div>
-                <div class="input"><label for="password">Password<span class="star">*</span></label>
+                <div class="input"><label for="password" class="head-view">Password<span class="star">*</span></label>
                     <input type="password" placeholder="Min 8 Characters Max 15 Characters" id="password"
                         maxlength="15">
                     <input type="checkbox" onclick="myFunction()" id="visible"> <label for="visible"> Show
                         Password</label>
                     <p id="errorforpassword"></p>
                 </div>
-                <div class="input"> <label for="confirmpassword">Confirm Password<span class="star">*</span></label>
+                <div class="input">
+                    <label for="confirmpassword" class="head-view">Confirm Password<span class="star">*</span></label>
                     <input type="password" placeholder="Same As Above" id="confirmpassword" maxlength="15">
                     <input type="checkbox" onclick="myFunction2()" id="visible1"> <label for="visible1"> Show
                         Password</label>
@@ -262,7 +401,8 @@
                 </div>
                 <div class="terms">
                     <input type="checkbox" id="termsandcondition" name="tac" value="tac">
-                    <label for="termsandcondition"> Terms & Condition <span class="star">*</span> </label>
+                    <label for="termsandcondition" class="head-view"> Terms & Condition <span class="star">*</span>
+                    </label>
                     <p id="errorfortac"></p>
                 </div>
                 <div class="button text-center">
@@ -274,62 +414,70 @@
             <div>
                 <button type="button" onclick="closebtn()" class="btn closebtn">X</button>
             </div>
-            <h1 class="text-center">Result</h1>
-            <div class="row">
+            <h1 class="text-center mb-4">Result</h1>
+            <div class="row mb-4">
                 <div class="col-12">
                     <div class="box">
-                        <p>Name</p>
-                        <span id="fullnameresult" class="text-capitalize"></span>
+                        <p>Name <i class="far fa-user-circle"></i></p>
+                        <span id="fullnameresult" class="text-capitalize result-view-box"></span>
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mb-4">
                 <div class="col-6">
                     <div class="box">
-                        <p>Number </p><span id="numberresult"></span>
+                        <p>Number <i class="fas fa-phone-alt"></i></p>
+                        <span id="numberresult" class="result-view-box"></span>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="box">
-                        <p>Email</p> <span id="emailresult"></span>
+                        <p>Email <i class="fas fa-envelope-open"></i></p>
+                        <span id="emailresult" class="result-view-box"></span>
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mb-4">
                 <div class="col-6">
                     <div class="box">
-                        <p>Gender </p>
-                        <span class="icons"><i class="fas fa-mars" id="maleicon"></i><i class="fas fa-transgender"
-                                id="othericon"></i>
-                            <i class="fas fa-venus" id="femaleicon"></i></span> <span class="genderView text-capitalize"
-                            id="genderresult">
+                        <p>Gender <i class="fas fa-genderless"></i></p>
+                        <span class="result-span  result-view-box">
+                            <span class="icons">
+                                <i class="fas fa-mars" id="maleicon"></i>
+                                <i class="fas fa-transgender" id="othericon"></i>
+                                <i class="fas fa-venus" id="femaleicon"></i>
+                            </span>
+                            <span class="genderView text-capitalize" id="genderresult">
+                            </span>
                         </span>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="box">
-                        <p>Date of Birth</p>
-                        <span id="dobresult"></span>
+                        <p>Date of Birth <i class="far fa-calendar-alt"></i></p>
+                        <span id="dobresult" class="result-view-box"></span>
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mb-4">
                 <div class="col-12">
                     <div class="box">
-                        <p>Website</p>
-                        <span id="websiteresult"></span>
+                        <p>Website <i class="fas fa-link"></i></p>
+                        <span id="websiteresult" class="result-view-box"></span>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-6">
                     <div class="box">
-                        <p>Password </p><span id="passwordresult"></span>
+                        <p>Password <i class="fas fa-key"></i></p>
+                        <span id="passwordresult" class="result-view-box"></span>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="box">
-                        <p>Terms & Conditions</p><span id="resultfortac"></span>
+                        <p>Terms & Conditions <i class="fas fa-book"></i></p>
+                        <span id="resultfortac" class="result-view-box"></span>
                     </div>
                 </div>
             </div>
